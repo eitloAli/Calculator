@@ -124,15 +124,15 @@ const updateFlag = (element) => {
 //   }, 2000);
 // });
 
-amountInput.addEventListener("input", ()=>{
-  updateExchangeRate()
-})
+//amountInput.addEventListener("input", ()=>{
+//  updateExchangeRate()
+//})
 
 btn.addEventListener("click", (evt) => {
   evt.preventDefault();
   updateExchangeRate();
 });
 
-window.addEventListener("load", () => {
-  updateExchangeRate();
-});
+//window.addEventListener("load", () => {
+ // updateExchangeRate();
+//});
