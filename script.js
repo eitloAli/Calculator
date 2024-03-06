@@ -83,10 +83,10 @@ for (let select of dropdowns) {
 const updateExchangeRate = async () => {
   let amount = document.querySelector(".amount input");
   let amtVal = amount.value;
-  if (amtVal === "" || amtVal < 1) {
-    amtVal = 1;
-    amount.value = "1";
-  }
+  // if (amtVal === "" || amtVal < 1) {
+  //   amtVal = 1;
+  //   amount.value = "1";
+  // }
   let to_curr = document.querySelector("#to-curr");
   let from_curr = document.querySelector("#from-curr")
 
