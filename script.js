@@ -1,5 +1,12 @@
+alert("there are some migration for currencies conversion so it will fix soon")
+
+
+
+
+
+
 let BASE_URL =
-  "https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies";
+  "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies";
 const dropdowns = document.querySelectorAll(".dropdown select");
 const btn = document.querySelector("button");
 const fromCurr = document.querySelector(".from select");
@@ -9,7 +16,6 @@ const msg = document.querySelector(".msg");
 
 amountInput.addEventListener("keypress", (event) => {
   const keyCode = event.code;
-  console.log(keyCode);
 
   // Allow numeric keys (0-9) from both the main keyboard and the numeric keypad, and certain control keys
   const allowedKeys = [
@@ -73,6 +79,7 @@ for (let select of dropdowns) {
 }
 
 
+
 const updateExchangeRate = async () => {
   let amount = document.querySelector(".amount input");
   let amtVal = amount.value;
@@ -80,18 +87,19 @@ const updateExchangeRate = async () => {
     amtVal = 1;
     amount.value = "1";
   }
-  const URL = `${BASE_URL}/${fromCurr.value.toLowerCase()}/${toCurr.value.toLowerCase()}.json`;
+  let to_curr = document.querySelector("#to-curr");
+  let from_curr = document.querySelector("#from-curr")
+
+  const URL = `${BASE_URL}/${from_curr.value.toLowerCase()}.json`;
+
   let response = await fetch(URL);
   let data = await response.json();
-  let rate = data[toCurr.value.toLowerCase()];
+  let rate = data[from_curr.value.toLowerCase()];
+  let finalRate = rate[to_curr.value.toLowerCase()] * amtVal;
+  finalRate = Math.floor(finalRate)
 
-  let finalAmount = amtVal * rate;
-  msg.innerText = `${amtVal} ${fromCurr.value} = ${finalAmount} ${toCurr.value}`;
-};
-
-
-
-
+  msg.textContent = `${amtVal} ${from_curr.value} = ${finalRate} ${to_curr.value}`
+}
 
 
 
@@ -105,34 +113,15 @@ const updateFlag = (element) => {
 };
 
 
-// amountInput.addEventListener("input", (evt) => {
-//   setTimeout(async () => {
-//     evt.preventDefault();
-//     let amtVal = amountInput.value;
-//     if (amtVal === "" || amtVal < 0) {
-//       amtVal;
-//       amountInput.value = "";
-//     }
-//     // console.log(amtVal);
-//     const URL = `${BASE_URL}/${fromCurr.value.toLowerCase()}/${toCurr.value.toLowerCase()}.json`;
-//     let response = await fetch(URL);
-//     let data = await response.json();
-//     let rate = data[toCurr.value.toLowerCase()];
-//     let finalRate = Math.floor(rate * amtVal);
-//     console.log(finalRate);
-//     msg.textContent = `${amtVal} ${fromCurr.value} = ${finalRate} ${toCurr.value}`;
-//   }, 2000);
-// });
-
-//amountInput.addEventListener("input", ()=>{
-//  updateExchangeRate()
-//})
 
 btn.addEventListener("click", (evt) => {
   evt.preventDefault();
   updateExchangeRate();
 });
 
-//window.addEventListener("load", () => {
- // updateExchangeRate();
-//});
+
+amountInput.addEventListener("input", ()=>{
+  setTimeout(()=>{
+    updateExchangeRate()
+  }, 1500)
+})

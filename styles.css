@@ -1,18 +1,21 @@
 * {
   margin: 0;
   padding: 0;
+  transition: all 0.2s;
 }
 
 body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background-color: #f4e4ba;
+  min-height: 70vh;
+  background-color: hsl(44, 52%, 36%);
 }
 .warn {
   position: absolute;
   top: 20px;
+  font-size: 2em;
+  background-color: gray;
 }
 .container {
   background-color: #fff;
@@ -20,7 +23,6 @@ body {
   border-radius: 1rem;
   min-height: 45vh;
   width: 40vh;
-  margin: 20px;
 }
 
 form {
@@ -83,4 +85,15 @@ form button {
   color: #fff;
   font-size: 1.15rem;
   cursor: pointer;
+}
+
+
+.rate {
+  margin-top: 10%
+}
+
+@media only screen and (max-width: 576px) {
+  .container {
+    margin-top: 25%;
+  }
 }
