@@ -22,7 +22,8 @@ body {
   padding: 2rem;
   border-radius: 1rem;
   min-height: 45vh;
-  width: 40vh;
+  width: 80%;
+  max-width: 350px;
 }
 
 form {
@@ -65,9 +66,11 @@ form input {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 6rem;
+  width: 100%;
   border-radius: 0.5rem;
   border: 1px solid lightgray;
+  margin-bottom: 1rem; /* Added space between dropdowns */
+
 }
 
 .select-container select {
@@ -91,6 +94,20 @@ form button {
 .rate {
   margin-top: 10%
 }
+/* Media query for smaller screens */
+@media only screen and (max-width: 768px) {
+  .container {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .container {
+    width: 95%;
+  }
+}
+
+
 
 @media only screen and (max-width: 576px) {
   .container {
