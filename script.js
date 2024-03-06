@@ -1,4 +1,3 @@
-alert("there are some migration for currencies conversion so it will fix soon")
 
 
 
