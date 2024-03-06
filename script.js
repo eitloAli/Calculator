@@ -121,7 +121,5 @@ btn.addEventListener("click", (evt) => {
 
 
 amountInput.addEventListener("input", ()=>{
-  setTimeout(()=>{
     updateExchangeRate()
-  }, 1500)
 })
