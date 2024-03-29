@@ -118,7 +118,10 @@ btn.addEventListener("click", (evt) => {
   updateExchangeRate();
 });
 
-
-amountInput.addEventListener("input", ()=>{
-    updateExchangeRate()
-})
+let debounceTimer;
+amountInput.addEventListener("input", () => {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => {
+        updateExchangeRate();
+    }, 300)
+});
